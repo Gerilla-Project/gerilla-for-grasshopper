@@ -28,3 +28,7 @@ The install files are ound in the "GerillaInstall" folder.
 2. Copy the "Gerilla" folder to your C: drive. The file path should be: C:\Gerilla. 
 
 Additional directions are contained in the Gerilla primer.
+
+Tested with
+-----------
+Rhinocerous v4.0 SR9, Grasshopper v0.9.0014, EnergyPlus v8.0.0: works. 
