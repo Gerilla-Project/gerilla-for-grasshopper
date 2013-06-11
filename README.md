@@ -1,7 +1,7 @@
 ﻿Gerilla for Grasshopper, Version 0.9, June 11, 2013
 ====================================================
 
-*Please be advised that Gerilla is still in early development*
+*Please be advised that Gerilla is still in early development.*
 
 Gerilla is a plugin for Grasshopper / Rhino that will allow you to run full building energy simulations on using the EnergyPlus simulation engine. It was born in the Product Architecture Lab at Stevens Institute of Technology in Fall of 2011 and is the result of the collaborative efforts of Michael Marvin, Drew Orvieto, and Ben Silverman. Brendan Albano joined the development team in 2013 and is organizing Gerilla's public launch. Gerilla is an open source, free to download plugin for Grasshopper.
 
