@@ -1,0 +1,7 @@
+  Material:NoMass,
+    MAT-CLNG-1,              !- Name
+    Rough,                   !- Roughness
+    0.652259290,             !- Thermal Resistance {m2-K/W}
+    0.65,                    !- Thermal Absorptance
+    0.65,                    !- Solar Absorptance
+    0.65;                    !- Visible Absorptance

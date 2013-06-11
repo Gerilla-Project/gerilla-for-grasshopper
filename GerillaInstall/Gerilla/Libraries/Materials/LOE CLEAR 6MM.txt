@@ -1,0 +1,15 @@
+  WindowMaterial:Glazing,
+    LoE CLEAR 6MM,           !- Name
+    SpectralAverage,         !- Optical Data Type
+    ,                        !- Window Glass Spectral Data Set Name
+    0.006,                   !- Thickness {m}
+    0.600,                   !- Solar Transmittance at Normal Incidence
+    0.170,                   !- Front Side Solar Reflectance at Normal Incidence
+    0.220,                   !- Back Side Solar Reflectance at Normal Incidence
+    0.840,                   !- Visible Transmittance at Normal Incidence
+    0.055,                   !- Front Side Visible Reflectance at Normal Incidence
+    0.078,                   !- Back Side Visible Reflectance at Normal Incidence
+    0.0,                     !- Infrared Transmittance at Normal Incidence
+    0.84,                    !- Front Side Infrared Hemispherical Emissivity
+    0.10,                    !- Back Side Infrared Hemispherical Emissivity
+    0.9;                     !- Conductivity {W/m-K}

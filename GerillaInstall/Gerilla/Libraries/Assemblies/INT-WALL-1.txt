@@ -1,0 +1,5 @@
+  Construction,
+    INT-WALL-1,              !- Name
+    GP02,                    !- Outside Layer
+    AL21,                    !- Layer 2
+    GP02;                    !- Layer 3

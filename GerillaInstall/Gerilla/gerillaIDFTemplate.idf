@@ -1,0 +1,257 @@
+!-Generator IDFEditor 1.38a
+!-Option OriginalOrderTop UseSpecialFormat
+
+!-NOTE: All comments with '!-' are ignored by the IDFEditor and are generated automatically.
+!-      Use '!' comments if they need to be retained when using the IDFEditor.
+
+ZoneList,
+    gerillaZones,            !- Zone List Name
+!!!!!ZoneList!!!!!
+
+
+SimulationControl,
+    NO,                      !- Do Zone Sizing Calculation
+    No,                      !- Do System Sizing Calculation
+    No,                      !- Do Plant Sizing Calculation
+    No,                      !- Run Simulation for Sizing Periods
+    Yes;                     !- Run Simulation for Weather File Run Periods
+
+!!!!!RunPeriod!!!!!
+    UseWeatherFile,          !- Day of Week for Start Day
+    Yes,                     !- Use Weather File Holidays and Special Days
+    Yes,                     !- Use Weather File Daylight Saving Period
+    No,                      !- Apply Weekend Holiday Rule
+    Yes,                     !- Use Weather File Rain Indicators
+    Yes,                     !- Use Weather File Snow Indicators
+    1;                       !- Number of Times Runperiod to be Repeated
+
+! Introduction to EnergyPlus - Exercise 1A
+!
+! Building: Fictional 1 zone building with lightweight walls and 2 windows.
+!           8m x 6m x 2.7m high, long side facing N and S
+!           20C heating, 24C cooling
+! Internal: None.
+! System:   Purchased Air.
+! Plant:    None.
+! Environment:  Chicago, IL, USA, Summer and Winter design days
+!
+!
+Version,6.0;
+
+Building,
+    Exercise 1A,             !- Name
+    0.0,                     !- North Axis {deg}
+    Country,                 !- Terrain
+    0.04,                    !- Loads Convergence Tolerance Value
+    0.4,                     !- Temperature Convergence Tolerance Value {deltaC}
+    FullInteriorAndExterior, !- Solar Distribution
+    ;                        !- Maximum Number of Warmup Days
+
+Timestep,4;
+SurfaceConvectionAlgorithm:Inside,TARP;
+SurfaceConvectionAlgorithm:Outside,TARP;
+HeatBalanceAlgorithm,ConductionTransferFunction;
+
+ShadowCalculation,
+    20;                      !- Calculation Frequency
+
+Site:Location,
+    CHICAGO_IL_USA TMY2-94846,  !- Name
+    41.78000,                !- Latitude {deg}
+    -87.75000,               !- Longitude {deg}
+    -6.000000,               !- Time Zone {hr}
+    190.0000;                !- Elevation {m}
+
+!! CHICAGO_IL_USA Cooling (DB=>MWB) .4%, MaxDB=  32.80 MWB=  23.60
+!!!!!gerilla currently only runs simulations for weather file run periods and does not perform sizing periods
+!!!!!sizing period simulations can be run by uncommenting our the following lines and typing "Yes" 
+!!!!!for "!- Run Simulation for Sizing Periods" under the "SimulationControl" entry above
+!SizingPeriod:DesignDay,
+!    CHICAGO_IL_USA Cooling .4% Conditions DB=>MWB,  !- Name
+!    32.80000,                !- Maximum Dry-Bulb Temperature {C}
+!    10.90000,                !- Daily Temperature Range {deltaC}
+!    23.60000,                !- Humidity Indicating Conditions at Maximum Dry-Bulb
+!    99063.21,                !- Barometric Pressure {Pa}
+!    0.0,                     !- Wind Speed {m/s}
+!    0.0,                     !- Wind Direction {deg}
+!    1.000000,                !- Sky Clearness
+!    0,                       !- Rain Indicator
+!    0,                       !- Snow Indicator
+!    21,                      !- Day of Month
+!    7,                       !- Month
+!    SummerDesignDay,         !- Day Type
+!    0,                       !- Daylight Saving Time Indicator
+!    WetBulb;                 !- Humidity Indicating Type
+
+!! CHICAGO_IL_USA Heating 99.6%, MaxDB= -21.20 Wind Speed=   4.60 Wind Dir= 270.00
+!SizingPeriod:DesignDay,
+!    CHICAGO_IL_USA Heating 99.6% Conditions,  !- Name
+!    -21.20000,               !- Maximum Dry-Bulb Temperature {C}
+!    0.0,                     !- Daily Temperature Range {deltaC}
+!    -21.20000,               !- Humidity Indicating Conditions at Maximum Dry-Bulb
+!    99063.21,                !- Barometric Pressure {Pa}
+!    4.600000,                !- Wind Speed {m/s}
+!    270.0000,                !- Wind Direction {deg}
+!    0.0,                     !- Sky Clearness
+!    0,                       !- Rain Indicator
+!    0,                       !- Snow Indicator
+!    21,                      !- Day of Month
+!    1,                       !- Month
+!    WinterDesignDay,         !- Day Type
+!    0,                       !- Daylight Saving Time Indicator
+!    WetBulb;                 !- Humidity Indicating Type
+
+Site:GroundTemperature:BuildingSurface,18.3,18.2,18.3,18.4,20.1,22.0,22.3,22.5,22.5,20.7,18.9,18.5;
+
+!!!!!Materials!!!!!
+Material,
+    PLASTERBOARD-1,          !- Name
+    MediumSmooth,            !- Roughness
+    0.01200,                 !- Thickness {m}
+    0.16000,                 !- Conductivity {W/m-K}
+    950.000,                 !- Density {kg/m3}
+    840.00,                  !- Specific Heat {J/kg-K}
+    0.900000,                !- Thermal Absorptance
+    0.600000,                !- Solar Absorptance
+    0.600000;                !- Visible Absorptance
+
+Material,
+    FIBERGLASS QUILT-1,      !- Name
+    Rough,                   !- Roughness
+    0.066,                   !- Thickness {m}
+    0.040,                   !- Conductivity {W/m-K}
+    12.000,                  !- Density {kg/m3}
+    840.00,                  !- Specific Heat {J/kg-K}
+    0.900000,                !- Thermal Absorptance
+    0.600000,                !- Solar Absorptance
+    0.600000;                !- Visible Absorptance
+
+Material,
+    WOOD SIDING-1,           !- Name
+    Rough,                   !- Roughness
+    0.00900,                 !- Thickness {m}
+    0.14000,                 !- Conductivity {W/m-K}
+    530.000,                 !- Density {kg/m3}
+    900.00,                  !- Specific Heat {J/kg-K}
+    0.900000,                !- Thermal Absorptance
+    0.600000,                !- Solar Absorptance
+    0.600000;                !- Visible Absorptance
+
+Material,
+    PLASTERBOARD-2,          !- Name
+    Rough,                   !- Roughness
+    0.01000,                 !- Thickness {m}
+    0.16000,                 !- Conductivity {W/m-K}
+    950.000,                 !- Density {kg/m3}
+    840.00,                  !- Specific Heat {J/kg-K}
+    0.900000,                !- Thermal Absorptance
+    0.600000,                !- Solar Absorptance
+    0.600000;                !- Visible Absorptance
+
+Material,
+    FIBERGLASS QUILT-2,      !- Name
+    Rough,                   !- Roughness
+    0.1118,                  !- Thickness {m}
+    0.040,                   !- Conductivity {W/m-K}
+    12.000,                  !- Density {kg/m3}
+    840.00,                  !- Specific Heat {J/kg-K}
+    0.900000,                !- Thermal Absorptance
+    0.600000,                !- Solar Absorptance
+    0.600000;                !- Visible Absorptance
+
+Material,
+    ROOF DECK,               !- Name
+    Rough,                   !- Roughness
+    0.01900,                 !- Thickness {m}
+    0.14000,                 !- Conductivity {W/m-K}
+    530.000,                 !- Density {kg/m3}
+    900.00,                  !- Specific Heat {J/kg-K}
+    0.900000,                !- Thermal Absorptance
+    0.600000,                !- Solar Absorptance
+    0.600000;                !- Visible Absorptance
+
+Material,
+    HF-C5,                   !- Name
+    MediumRough,             !- Roughness
+    0.1015000,               !- Thickness {m}
+    1.729600,                !- Conductivity {W/m-K}
+    2243.000,                !- Density {kg/m3}
+    837.0000,                !- Specific Heat {J/kg-K}
+    0.9000000,               !- Thermal Absorptance
+    0.6500000,               !- Solar Absorptance
+    0.6500000;               !- Visible Absorptance
+
+!!!!!Constructions!!!!!
+Construction,
+    LTWALL,                  !- Name
+    WOOD SIDING-1,           !- Outside Layer
+    FIBERGLASS QUILT-1,      !- Layer 2
+    PLASTERBOARD-1;          !- Layer 3
+
+Construction,
+    LTFLOOR,                 !- Name
+    HF-C5;                   !- Outside Layer
+
+Construction,
+    LTROOF,                  !- Name
+    ROOF DECK,               !- Outside Layer
+    FIBERGLASS QUILT-2,      !- Layer 2
+    PLASTERBOARD-2;          !- Layer 3
+
+
+!!!!!Zones!!!!!
+
+GlobalGeometryRules,
+    LowerLeftCorner,         !- Starting Vertex Position
+    Counterclockwise,        !- Vertex Entry Direction
+    WorldCoordinateSystem;   !- Coordinate System
+
+!!!!!BuildingSurfaces!!!!!
+
+ScheduleTypeLimits,
+    Any Number;              !- Name
+
+Schedule:Compact,
+    ALWAYS 4,                !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00, 4;         !- Field 4
+
+Schedule:Compact,
+    ALWAYS 20,               !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00, 20;        !- Field 4
+
+Schedule:Compact,
+    ALWAYS 24,               !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00, 24;        !- Field 4
+
+!!!!!ZoneEquipConnections!!!!!
+
+ZoneControl:Thermostat,
+    gerillaZones Thermostat,     !- Name
+    gerillaZones,                !- Zone or ZoneList Name
+    ALWAYS 4,                !- Control Type Schedule Name
+    ThermostatSetpoint:DualSetpoint,  !- Control 1 Object Type
+    Office Thermostat Dual SP Control;  !- Control 1 Name
+
+ThermostatSetpoint:DualSetpoint,
+    Office Thermostat Dual SP Control,  !- Name
+    ALWAYS 20,               !- Heating Setpoint Temperature Schedule Name
+    ALWAYS 24;               !- Cooling Setpoint Temperature Schedule Name
+
+Output:Variable,*,Outdoor Dry Bulb,Monthly;
+Output:Variable,*,Zone/Sys Sensible Cooling Energy,Monthly;
+Output:Variable,*,Zone/Sys Sensible Heating Energy,Monthly;
+Output:Variable,*,Zone/Sys Air Temperature,Monthly;
+Output:Meter,DistrictHeating:Facility,Monthly;
+Output:Meter,DistrictCooling:Facility,Monthly;
+Output:Surfaces:Drawing,DXF;
+Output:Constructions,Constructions;
+Output:VariableDictionary,Regular;

@@ -1,0 +1,6 @@
+  Construction,
+    WALL-1,                  !- Name
+    WD01,                    !- Outside Layer
+    PW03,                    !- Layer 2
+    IN02,                    !- Layer 3
+    GP01;                    !- Layer 4

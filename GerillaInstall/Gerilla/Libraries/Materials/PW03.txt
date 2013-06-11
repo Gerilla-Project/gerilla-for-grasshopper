@@ -1,0 +1,10 @@
+  Material,
+    PW03,                    !- Name
+    MediumSmooth,            !- Roughness
+    1.2700000E-02,           !- Thickness {m}
+    0.1150000,               !- Conductivity {W/m-K}
+    545.0000,                !- Density {kg/m3}
+    1213.000,                !- Specific Heat {J/kg-K}
+    0.9000000,               !- Thermal Absorptance
+    0.7800000,               !- Solar Absorptance
+    0.7800000;               !- Visible Absorptance

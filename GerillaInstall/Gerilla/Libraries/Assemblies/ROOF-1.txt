@@ -1,0 +1,6 @@
+  Construction,
+    ROOF-1,                  !- Name
+    RG01,                    !- Outside Layer
+    BR01,                    !- Layer 2
+    IN46,                    !- Layer 3
+    WD01;                    !- Layer 4

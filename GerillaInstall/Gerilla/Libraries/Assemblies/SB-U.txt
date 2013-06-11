@@ -1,0 +1,3 @@
+  Construction,
+    SB-U,                    !- Name
+    MAT-SB-U;                !- Outside Layer

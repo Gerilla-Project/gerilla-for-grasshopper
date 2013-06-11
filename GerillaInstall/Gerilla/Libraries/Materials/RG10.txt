@@ -1,0 +1,10 @@
+  Material,
+    RG01,                    !- Name
+    Rough,                   !- Roughness
+    1.2700000E-02,           !- Thickness {m}
+    1.442000,                !- Conductivity {W/m-K}
+    881.0000,                !- Density {kg/m3}
+    1674.000,                !- Specific Heat {J/kg-K}
+    0.9000000,               !- Thermal Absorptance
+    0.6500000,               !- Solar Absorptance
+    0.6500000;               !- Visible Absorptance

@@ -1,0 +1,3 @@
+  Material:AirGap,
+    AL23,                    !- Name
+    0.1530000;               !- Thermal Resistance {m2-K/W}

@@ -1,0 +1,3 @@
+  Construction,
+    FLOOR-SLAB-1,            !- Name
+    CC03;                    !- Outside Layer
