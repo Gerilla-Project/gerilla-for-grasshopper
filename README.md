@@ -15,11 +15,11 @@ The Gerilla project is programmed in VB.net and uses the SharpDevelop IDE.
 Gameplan
 --------
 The goal this summer is to get Gerilla in a place where it is useable and really easy for more people to get involved with its development, so that it can take on a life of its own. In order to do that, we need to:
--Clean up the code and add comments.
--Write up detailed instructions for contributing to the project and compile a list of links to resources to help contributors who are new to GitHub, EnergyPlus, or developing plug-ins for Grasshopper.
--Get Gerilla up and running on Rhino 5 and the latest version of Grasshopper.
--Establish a protocol of verifying the EnergyPlus results generated from Gerilla by comparying them with those from another program that uses EnergyPlus.
--Set some goals for the future of the project.
+- Clean up the code and add comments.
+- Write up detailed instructions for contributing to the project and compile a list of links to resources to help contributors who are new to GitHub, EnergyPlus, or developing plug-ins for Grasshopper.
+- Get Gerilla up and running on Rhino 5 and the latest version of Grasshopper.
+- Establish a protocol of verifying the EnergyPlus results generated from Gerilla by comparying them with those from another program that uses EnergyPlus.
+- Set some goals for the future of the project.
 
 Contributing
 ------------
