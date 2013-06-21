@@ -1,0 +1,7 @@
+We are very excited to announce that after a bit of a delay, we have finally opened up the source code to Gerilla as a public project on gitHub. Thanks to our newest team member, Brandon Albano, the Gerilla code has been updated to work with EnergyPlus v8.0.0, Rhino 4.0 SR9, and Grasshopper V0.9.0014 and has been posted on gitHub at https://github.com/Gerilla-Project/gerilla-for-grasshopper with an very open GPL license. We are excited to build a large and passionate group of contributors to tap into the huge potential of parametric energy modelling.  
+
+There is a lot of work to do, starting with updating to the Rhino 5 and the latest grasshopper release, verifying results, adding mechanical system inputs and beyond. EnergyPlus has seemingly limitless functionality and we want to see how far we can push Gerilla. We have received emails from interested folks in the academic and professional world and we hope to build an amazing tool by harnessing the power of our collective minds.
+
+For those of you that are not interested in adding code to the project, but would rather contribute in testing usability and verifying results, we will occasionally re-compile Gerilla and post new releases on Food4Rhino as we make progress on the code.
+
+Thanks for waiting. We're looking forward to working with you.
