@@ -8,34 +8,36 @@ Imports Rhino.Geometry
 
 Imports System.IO
 
+Imports System.Windows.Forms
+
 Public Class GerillaMaterials
 	
-Inherits GH_Component
-    
-    'Constructor
-    Public Sub New()
-    	
-    	MyBase.New("Gerilla Material Maker", "Material Maker", "Create Custom Gerilla Materials", "Gerilla", "Materials")
-    	
-    End Sub
-    
-    Public Overrides ReadOnly Property ComponentGuid As System.Guid
-
-        Get
- 		Return New Guid("B8E442C4-AB3A-4C33-8C15-95271811C5EC") 'www.createguid.com
-        End Get
-
-    End Property
-    
-    Protected Overrides ReadOnly property icon As System.drawing.Bitmap
- 		Get
-    		Return gerillaResource.GerillaIconMaterialMaker
- 	    End Get
+	Inherits GH_Component
+	
+	'Constructor
+	Public Sub New()
+		
+		MyBase.New("Gerilla Material Maker", "Material Maker", "Create Custom Gerilla Materials", "Gerilla", "Materials")
+		
+	End Sub
+	
+	Public Overrides ReadOnly Property ComponentGuid As System.Guid
+		
+		Get
+			Return New Guid("B8E442C4-AB3A-4C33-8C15-95271811C5EC") 'www.createguid.com
+		End Get
+		
 	End Property
-    
-
-    Protected Overrides Sub RegisterInputParams(ByVal pManager As Grasshopper.Kernel.GH_Component.GH_InputParamManager)
-
+	
+	Protected Overrides ReadOnly property icon As System.drawing.Bitmap
+		Get
+			Return gerillaResource.GerillaIconMaterialMaker
+		End Get
+	End Property
+	
+	
+	Protected Overrides Sub RegisterInputParams(ByVal pManager As Grasshopper.Kernel.GH_Component.GH_InputParamManager)
+		
 		pManager.AddTextParameter("Name", "Name", "Material Name", GH_ParamAccess.item, "Default Name")
 		pManager.AddIntegerParameter("Roughness", "Roughness", "Material Roughness; 1 = Smoothest, 6 = Roughest", GH_ParamAccess.item, 0)
 		pManager.AddTextParameter("Thickness", "Thickness (m)", "Thickness (m)", GH_ParamAccess.item, "0")
@@ -47,25 +49,25 @@ Inherits GH_Component
 		pManager.AddTextParameter("VisibleAbsorptance", "Visible Absorptance (0 to 0.99)", "Visible Absorptance (0 to 0.99)", GH_ParamAccess.item,"0")
 		pManager.AddBooleanParameter("ProjectLibrary", "Save to Project Library", "Project Library", GH_ParamAccess.item, False)
 		pManager.AddBooleanParameter("GerillaLibrary", "Save to Gerilla Library", "Gerilla Library", GH_ParamAccess.item, False)
-
-    End Sub
-
-
-    Protected Overrides Sub RegisterOutputParams(ByVal pManager As Grasshopper.Kernel.GH_Component.GH_OutputParamManager)
-    	
-    	pManager.AddTextParameter("Material Name", "Material Name", "Material Name", GH_ParamAccess.item)
+		
+	End Sub
+	
+	
+	Protected Overrides Sub RegisterOutputParams(ByVal pManager As Grasshopper.Kernel.GH_Component.GH_OutputParamManager)
+		
+		pManager.AddTextParameter("Material Name", "Material Name", "Material Name", GH_ParamAccess.item)
 		pManager.AddTextParameter("Material IDF", "IDF", "Custom Gerilla Material For IDF Compiler", GH_ParamAccess.item)
-
-    End Sub
-    
-    
-    Protected Overrides Sub SolveInstance(ByVal DA As Grasshopper.Kernel.IGH_DataAccess)
-    	
-    	'Private Variables
-    	
-    	Dim myName As String = Nothing
-    	Dim myRoughness As Integer = Nothing
-	   	Dim myThickness As String = Nothing
+		
+	End Sub
+	
+	
+	Protected Overrides Sub SolveInstance(ByVal DA As Grasshopper.Kernel.IGH_DataAccess)
+		
+		'Private Variables
+		
+		Dim myName As String = Nothing
+		Dim myRoughness As Integer = Nothing
+		Dim myThickness As String = Nothing
 		Dim myConductivity As String = Nothing
 		Dim myDensity As String = Nothing
 		Dim mySpecificHeat As String = Nothing
@@ -74,7 +76,7 @@ Inherits GH_Component
 		Dim myVisibleAbsorptance As String = Nothing
 		Dim myProjectDatabase As Boolean = Nothing
 		Dim myGerillaDatabase As Boolean = Nothing 
-    	
+		
 		
 		If (Not DA.GetData(0,myName)) Then Return
 		If (Not DA.GetData(1,myRoughness)) Then Return
@@ -96,23 +98,23 @@ Inherits GH_Component
 		myMaterialOutput.Add(myName & "		!- Name")
 		
 		Select Case myRoughness
-            Case 1 
-                myMaterialOutput.Add("VerySmooth        !- Roughness")
-            Case 2 
-                myMaterialOutput.Add("Medium Smooth        !- Roughness")
-            Case 3 
-                myMaterialOutput.Add("Smooth        !- Roughness")
-            Case 4
-                myMaterialOutput.Add("Rough        !- Roughness")
-            Case 5
-                myMaterialOutput.Add("MediumRough        !- Roughness")
-            Case 6
-                myMaterialOutput.Add("VeryRough        !- Roughness")
-            Case Else
-                myMaterialOutput.Add("Smooth        !- Roughness")
-        End Select
-        
-        myMaterialOutput.Add(myThickness & "		!- Thickness")
+			Case 1 
+				myMaterialOutput.Add("VerySmooth        !- Roughness")
+			Case 2 
+				myMaterialOutput.Add("Medium Smooth        !- Roughness")
+			Case 3 
+				myMaterialOutput.Add("Smooth        !- Roughness")
+			Case 4
+				myMaterialOutput.Add("Rough        !- Roughness")
+			Case 5
+				myMaterialOutput.Add("MediumRough        !- Roughness")
+			Case 6
+				myMaterialOutput.Add("VeryRough        !- Roughness")
+			Case Else
+				myMaterialOutput.Add("Smooth        !- Roughness")
+		End Select
+		
+		myMaterialOutput.Add(myThickness & "		!- Thickness")
 		myMaterialOutput.Add(myConductivity & "		!- Conductivity {W/m-K}") 
 		myMaterialOutput.Add(myDensity & "		!- Density {kg/m3}")
 		myMaterialOutput.Add(mySpecificHeat & "		!- Specific Heat {J/kg-K}")
@@ -122,24 +124,28 @@ Inherits GH_Component
 		myMaterialOutput.Add("")
 		
 		'Save to Project Library
-
-		Dim ProjectDatabaseMessageBox As Integer 
 		
 		If myProjectDatabase = True Then
 			
 			If System.IO.File.Exists(GerillaProjectSetup.PublicProjectFilePath & "\" & GerillaProjectSetup.PublicProjectName & "\Materials\" & myName & ".txt") = True Then
+
+				Dim ProjectDatabaseMessageBox As DialogResult
 				
-				Select Case (ProjectDatabaseMessageBox = MsgBox("This material already exists in the Project Library. Do you want to overwrite?",vbYesNo,"Save Material"))
-				Case vbYes
+				ProjectDatabaseMessageBox = MessageBox.Show _
+												("This material already exists in the Project Library. Do you want to overwrite?", _
+												 "Save Material to Project Library", _
+												 MessageBoxButtons.YesNo)
+				
+				If ProjectDatabaseMessageBox = DialogResult.Yes Then
 					Dim ObjectWriter As New System.IO.StreamWriter(GerillaProjectSetup.PublicProjectFilePath & "\" & GerillaProjectSetup.PublicProjectName & "\Materials\" & myName & ".txt")
 					For j As Integer = 0 To myMaterialOutput.Count - 1
 						ObjectWriter.WriteLine(myMaterialOutput(j))	
 					Next
-				ObjectWriter.Close()
-				MsgBox("Material Updated")
-				Case vbNo
-					MsgBox("Material NOT Saved")
-				End Select 
+					ObjectWriter.Close()
+					MessageBox.Show("Material Updated")
+				ElseIf ProjectDatabaseMessageBox = DialogResult.No Then
+					MessageBox.Show("Material NOT Saved")
+				End If
 				
 			Else
 				
@@ -148,7 +154,7 @@ Inherits GH_Component
 					ObjectWriter.WriteLine(myMaterialOutput(j))	
 				Next
 				ObjectWriter.Close()
-				MsgBox("Material Updated")
+				MessageBox.Show("Material Updated")
 				
 			End If
 			
@@ -158,30 +164,28 @@ Inherits GH_Component
 		'Save to Gerilla Library
 		
 		Dim GerillaMaterialLibraryPath As String = "C:\geRILLA\Libraries\Materials\"
-		
-		Dim GerillaDatabaseMessageBox As Integer 
-		
+			
 		If myGerillaDatabase = True Then
 			
 			If System.IO.File.Exists(GerillaMaterialLibraryPath & myName & ".txt") = True Then
 				
-				Select Case (GerillaDatabaseMessageBox = MsgBox("This material already exists in the Gerilla Library. Do you want to overwrite?",vbYesNo,"Save Material"))
-						
-					Case vbYes
-						
-						'Save the material to the Gerilla Database
-						Dim GerillaObjectWriter As New System.IO.StreamWriter(GerillaMaterialLibraryPath & myName & ".txt")
-						For j As Integer = 0 To myMaterialOutput.Count - 1
-							GerillaObjectWriter.WriteLine(myMaterialOutput(j))	
-						Next	
-						GerillaObjectWriter.Close()
-						
-						MsgBox("Material Updated in Gerilla Library")
-					
-					Case vbNo
-						MsgBox("Material NOT Saved")
-						
-				End Select
+				Dim GerillaDatabaseMessageBox As DialogResult
+				GerillaDatabaseMessageBox = MessageBox.Show _
+												("This material already exists in the Gerilla Library. Do you want to overwrite?", _
+												 "Save Material to Gerilla Library", _
+												 MessageBoxButtons.YesNo)
+				
+				If GerillaDatabaseMessageBox = DialogResult.Yes Then
+					'Save the material to the Gerilla Database
+					Dim GerillaObjectWriter As New System.IO.StreamWriter(GerillaMaterialLibraryPath & myName & ".txt")
+					For j As Integer = 0 To myMaterialOutput.Count - 1
+						GerillaObjectWriter.WriteLine(myMaterialOutput(j))	
+					Next	
+					GerillaObjectWriter.Close()
+					MessageBox.Show("Material Updated")
+				ElseIf GerillaDatabaseMessageBox = DialogResult.No Then
+					MessageBox.Show("Material NOT Saved")
+				End If
 				
 			Else
 				
@@ -191,8 +195,8 @@ Inherits GH_Component
 					GerillaObjectWriter.WriteLine(myMaterialOutput(j))	
 				Next
 				GerillaObjectWriter.Close()				
-			
-				MsgBox("Material Saved")
+				
+				MessageBox.Show("Material Saved")
 				
 			End If
 			
@@ -200,7 +204,7 @@ Inherits GH_Component
 		
 		DA.SetData(0, myName)
 		DA.SetDataList(1, myMaterialOutput)
-    	
-    End Sub
-
+		
+	End Sub
+	
 End Class

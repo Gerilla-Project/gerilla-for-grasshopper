@@ -1,6 +1,20 @@
-Gerilla for Grasshopper, Version 0.9, June 11, 2013
+Gerilla for Grasshopper, Version 0.9, July 6, 2013
 
 Please note that Gerilla is still in early development.
+
+
+INSTALL
+------- 
+
+0. Gerilla requires EnergyPlus Version 8.
+1. Copy the "Gerilla.gha" file into your Grasshopper components folder. 
+2. Copy the "Gerilla" folder to your C: drive. The file path should be: C:\Gerilla. 
+
+Additional directions are contained in the Gerilla primer.
+
+
+LICENSE
+-------
 
 Copyright (c) 2011, 2013  Michael Marvin (michaeljmarvin@gmail.com), Drew Orvieto (dorvieto@gmail.com), Ben Silverman (bhsilverman@gmail.com), Brendan Albano (brendan@brendanalbano.com)
 
@@ -18,12 +32,3 @@ Copyright (c) 2011, 2013  Michael Marvin (michaeljmarvin@gmail.com), Drew Orviet
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 The developers of Gerilla grant you permission to link this plugin to McNeel's Rhino/Grasshopper environment, which is a non-free program. This is potentially an exception to the GPL: [https://www.gnu.org/licenses/gpl-faq.html#GPLPluginsInNF](https://www.gnu.org/licenses/gpl-faq.html#GPLPluginsInNF)
-
-To Install: 
-
-0. Gerilla requires EnergyPlus Version 8.
-1. Copy the "Gerilla.gha" file into your Grasshopper components folder. 
-2. Copy the "Gerilla" folder to your C: drive. The file path should be: C:\Gerilla. 
-
-Additional directions are contained in the Gerilla primer.
-

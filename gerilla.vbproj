@@ -55,7 +55,6 @@
       <HintPath>..\..\..\..\..\Program Files %28x86%29\Rhinoceros 4.0\Plug-ins\Grasshopper\Grasshopper.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Microsoft.Office.Interop.Excel" />
     <Reference Include="RhinoCommon">
       <HintPath>..\..\..\..\..\Program Files %28x86%29\Rhinoceros 4.0\Plug-ins\Grasshopper\rh_common\RhinoCommon.dll</HintPath>
       <Private>False</Private>
@@ -72,6 +71,7 @@
     <Reference Include="System.IO.Log">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
