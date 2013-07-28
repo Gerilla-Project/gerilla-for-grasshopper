@@ -136,15 +136,15 @@
 : the batch file. If the batch file is in the temporary directory the path 
 : for the location of EnergyPlus.exe will be passed as a parameter named epPath.
 
-cd\EnergyPlusV6-0-0\
- SET program_path=C:\EnergyPlusV6-0-0\
+cd\EnergyPlusV8-0-0\
+ SET program_path=C:\EnergyPlusV8-0-0\
 :pause
- IF "C:\EnergyPlusV6-0-0\" NEQ "" SET program_path=C:\EnergyPlusV6-0-0\
+ IF "C:\EnergyPlusV8-0-0\" NEQ "" SET program_path=C:\EnergyPlusV8-0-0\
 : Set flag if the current directory is the same directory that EnergyPlus and the 
 : batch file are located.
 :pause
  SET inEPdir=FALSE
- IF "%program_path%"=="C:\EnergyPlusV6-0-0\" SET inEPdir=TRUE
+ IF "%program_path%"=="C:\EnergyPlusV8-0-0\" SET inEPdir=TRUE
 echo Current Drive = %~d0
 echo Current Path = %~p0
 : pause

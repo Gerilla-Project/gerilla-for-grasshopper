@@ -36,7 +36,7 @@ SimulationControl,
 ! Environment:  Chicago, IL, USA, Summer and Winter design days
 !
 !
-Version,6.0;
+Version,8.0;
 
 Building,
     Exercise 1A,             !- Name
@@ -246,10 +246,10 @@ ThermostatSetpoint:DualSetpoint,
     ALWAYS 20,               !- Heating Setpoint Temperature Schedule Name
     ALWAYS 24;               !- Cooling Setpoint Temperature Schedule Name
 
-Output:Variable,*,Outdoor Dry Bulb,Monthly;
-Output:Variable,*,Zone/Sys Sensible Cooling Energy,Monthly;
-Output:Variable,*,Zone/Sys Sensible Heating Energy,Monthly;
-Output:Variable,*,Zone/Sys Air Temperature,Monthly;
+Output:Variable,*,Site Outdoor Air Drybulb Temperature,Monthly;
+Output:Variable,*,Zone Air System Sensible Cooling Energy,Monthly;
+Output:Variable,*,Zone Air System Sensible Heating Energy,Monthly;
+Output:Variable,*,Zone Air Temperature,Monthly;
 Output:Meter,DistrictHeating:Facility,Monthly;
 Output:Meter,DistrictCooling:Facility,Monthly;
 Output:Surfaces:Drawing,DXF;
