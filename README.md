@@ -9,6 +9,7 @@ Development Status
 ------------------
 
 After its initial development in 2011, the Gerilla project was dormant until restarting development in 2013. Gerilla was initally written for Energy Plus v6, and an older version of Grasshopper. The current code (as of 2013-06-15) has been preliminarily updated for Rhino 4, EnergyPlus v8 and Grasshopper v0.9.0014, but needs significantly more testing. That's where you come in!
+UPDATE 2013-09-18: Main branch is now on Rhino 5 and Grasshopper 0.9.0061
 
 The Gerilla project is programmed in VB.net and uses the SharpDevelop IDE.
 
@@ -55,4 +56,5 @@ Additional directions are contained in the Gerilla primer.
 
 Tested with
 -----------
+Rhinocerous v5 SR5, Grasshopper v0.9.0061, EnergyPlus v8.0.0: 2013-09-18s, works. 
 Rhinocerous v4.0 SR9, Grasshopper v0.9.0014, EnergyPlus v8.0.0: 2013-06-11, works. 
